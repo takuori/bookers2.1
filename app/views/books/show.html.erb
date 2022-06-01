@@ -1,0 +1,47 @@
+<p id="notice"></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'users/info', user: @book.user %>
+      <%= render 'form', book: Book.new %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>投稿者</th>
+            <th>タイトル</th>
+            <th>感想</th>
+            <th>編集</th>
+            <th>削除</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to user_path(@book.user.id) do %>
+                <%= image_tag @book.user.get_profile_image(100,100) %><br>
+                <%= @book.user.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to book_path(@book.id) do %>
+                <%= @book.title %>
+              <% end %>
+            </td>
+            <td>
+              <%= @book.body %>
+            </td>
+            <td>
+              <%= link_to "編集", edit_book_path(@book.id), class: "btn btn-sm btn-success" %>
+            </td>
+            <td>
+              <%= link_to "削除", @book, method: :delete, "data-confirm" => "削除してよろしいですか？", class: "btn btn-sm btn-danger" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

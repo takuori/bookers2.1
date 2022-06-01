@@ -1,0 +1,36 @@
+<p id="notice"></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'info', user: @user %>
+      <%= render 'books/form', book: Book.new %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Users</h2>
+      <table class="table">
+        <thesd>
+          <tr>
+            <th>トップ画</th>
+            <th>ユーザー名</th>
+            <th>ユーザー詳細</th>
+          </tr>
+        </thesd>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td>
+              <%= image_tag user.get_profile_image(100,100) %>
+            </td>
+            <td>
+              <%= user.name %>
+            </td>
+            <td>
+              <%= link_to "ユーザー詳細", user_path(@user.id), class: "btn btn-sm btn-success" %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
