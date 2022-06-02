@@ -6,6 +6,7 @@
       <%= render 'books/form', book: Book.new %>
     </div>
     <div class="col-md-8 offset-md-1">
+      <%= flash[:notice] %>
       <h2>Users</h2>
       <table class="table">
         <thesd>

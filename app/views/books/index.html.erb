@@ -1,3 +1,13 @@
+<% if @book.errors.any? %>
+  <div id="error_explanation">
+    <h3><%= pluralize(@book.errors.count, "error") %>件のエラーが発生しました！！</h3>
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  </div>
+<% end %>
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">

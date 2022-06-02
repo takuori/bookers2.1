@@ -1,2 +1,12 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<p id="notice"></p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'info', user: @user %>
+      <%= render 'books/form', book: Book.new %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <%= render 'books/index', books: @books %>
+    </div>
+  </div>
+</div>
