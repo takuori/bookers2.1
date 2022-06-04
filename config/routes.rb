@@ -6,5 +6,6 @@ Rails.application.routes.draw do
 
   resources :users
   resources :books
+    resource :favorites, only: [:create, :destroy]
 end
 
