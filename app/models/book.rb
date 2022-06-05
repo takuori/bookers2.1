@@ -11,6 +11,20 @@ class Book < ApplicationRecord
   validates :title, presence: true
   validates :body, length: { minimum: 2, maximum: 50 }
 
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @book = Book.where("title LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @book = Book.where("title LIKE?", "#{word}%")
+    elsif search == "backword_match"
+      @book = Book.where("title LIKE?", "%#{word}")
+    elsif search == "partial_match"
+      @book = Book.where("title LIKE?", "%#{word}%")
+    else
+      @book = Book.all
+    end
+  end
+
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
