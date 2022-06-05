@@ -1,0 +1,6 @@
+<h2>Follwer Users</h2>
+<% if @users.exists? %>
+  <%= render 'users/info', users: @users %>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>

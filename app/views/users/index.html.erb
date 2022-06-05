@@ -14,6 +14,7 @@
             <th>トップ画</th>
             <th>ユーザー名</th>
             <th>ユーザー詳細</th>
+            <th>フォローする/外す</th>
           </tr>
         </thesd>
         <tbody>
@@ -26,7 +27,10 @@
               <%= user.name %>
             </td>
             <td>
-              <%= link_to "ユーザー詳細", user_path(@user.id), class: "btn btn-sm btn-success" %>
+              <%= link_to "ユーザー詳細", user_path(user.id), class: "btn btn-sm btn-success" %>
+            </td>
+            <td>
+              <%= render 'relationships/btn', user: user %>
             </td>
           </tr>
           <% end %>
