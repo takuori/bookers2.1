@@ -5,7 +5,18 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= user.name %></td>
+          <td>
+            <%= image_tag user.get_profile_image(100,100) %>
+          </td>
+          <td>
+            <%= user.name %>
+          </td>
+          <td>
+            <%= link_to "ユーザー詳細", user_path(user.id), class: "btn btn-sm btn-success" %>
+          </td>
+          <td>
+            <%= render 'relationships/btn', user: user %>
+          </td>
         </tr>
       <% end %>
     </tbody>
@@ -13,8 +24,22 @@
     <tbody>
       <% @books.each do |book| %>
         <tr>
-          <td><%= book.title %></td>
-          <td><%= book.body %></td>
+          <td>
+            <%= link_to user_path(book.user.id) do %>
+              <%= image_tag book.user.get_profile_image(100,100) %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to book_path(book.id) do %>
+              <%= book.title %>
+            <% end %>
+          </td>
+          <td>
+            <%= book.body %>
+          </td>
+          <td>
+            <%= render 'books/favorites', book: book %>
+          </td>
         </tr>
       <% end %>
     </tbody>
