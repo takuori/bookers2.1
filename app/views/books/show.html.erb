@@ -14,6 +14,7 @@
             <th>投稿者</th>
             <th>タイトル</th>
             <th>感想</th>
+            <th>いいね</th>
             <th>編集</th>
             <th>削除</th>
           </tr>
@@ -35,6 +36,9 @@
               <%= @book.body %>
             </td>
             <td>
+              <%= render 'favorites', book: @book %>
+            </td>
+            <td>
               <% if @book.user == current_user %>
                 <%= link_to "編集", edit_book_path(@book.id), class: "btn btn-sm btn-success" %>
               <% end %>
@@ -47,6 +51,10 @@
           </tr>
         </tbody>
       </table>
+      <div id="comment-area">
+        <%= render "comments/index", book: @book %>
+      </div>
+      <%= render "comments/form", book: @book, comment: @comment %>
     </div>
   </div>
 </div>
