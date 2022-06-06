@@ -35,8 +35,8 @@
             <td>
               <%= @book.body %>
             </td>
-            <td>
-              <%= render 'favorites', book: @book %>
+            <td class=<%= "favorite-btn" + @book.id.to_s %> >
+              <%= render 'favorites/favorites', book: @book %>
             </td>
             <td>
               <% if @book.user == current_user %>

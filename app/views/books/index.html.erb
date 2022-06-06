@@ -18,10 +18,10 @@
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
-            <th></th>
+            <th>投稿者</th>
             <th>タイトル</th>
             <th>感想</th>
-            <th colspan="3"></th>
+            <th>いいね数</th>
           </tr>
         </thead>
         <tbody>
@@ -40,8 +40,8 @@
             <td>
               <%= book.body %>
             </td>
-            <td>
-              <%= render 'favorites', book: book %>
+            <td class=<%= "favorite-btn" + book.id.to_s %> >
+              <%= render 'favorites/favorites', book: book %>
             </td>
           </tr>
           <% end %>
@@ -50,3 +50,4 @@
     </div>
   </div>
 </div>
+
