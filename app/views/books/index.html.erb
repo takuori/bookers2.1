@@ -12,6 +12,7 @@
   <div class="row">
     <div class="col-md-3">
       <%= render 'users/info', user: @user %>
+      <%= render 'form', book: Book.new %>
     </div>
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
@@ -22,6 +23,8 @@
             <th>タイトル</th>
             <th>感想</th>
             <th>いいね数</th>
+            <th>評価</th>
+            <th>点数</th>
           </tr>
         </thead>
         <tbody>
@@ -43,6 +46,22 @@
             <td class=<%= "favorite-btn" + book.id.to_s %> >
               <%= render 'favorites/favorites', book: book %>
             </td>
+            <td>
+              <div id="star-rate<%= book.id %>"> </td>
+              <script>
+                $('#star-rate<%= book.id %>').empty();
+                $('#star-rate<%= book.id %>').raty({
+                  size     : 36,
+                  starOff: '<%= asset_path('star-off.png') %>',
+                  starOn:  '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  readOnly: true,
+                  score: <%= book.rate %>,
+                });
+              </script>
+              </div>
+            <td><%= book.rate %></td>
           </tr>
           <% end %>
         </tbody>

@@ -1,11 +1,30 @@
 <h2 class="mt-3">New Book</h2>
 <%= form_with model: Book.new do |f| %>
-  <h5>タイトル</h5>
-  <%= f.text_field :title %>
+  <h5 class="mt-2">タイトル</h5>
+  <%= f.text_field :title, class: 'form-control' %>
 
-  <h5>感想</h5>
-  <%= f.text_area :body %>
+  <h5 class="mt-2">感想</h5>
+  <%= f.text_area :body, class: 'form-control' %>
+
+  <h5 class="mt-2">5段階評価</h5>
+  <div class="field" id="star">
+    <%= f.label :rate,'評価', class: 'col-md-3 col-form-label' %>
+    <%= f.hidden_field :rate, id: :review_star %>
+  </div>
+
+  <script>
+    $('#star').empty();
+    $('#star').raty({
+      size     : 36,
+      starOff: '<%= asset_path('star-off.png') %>',
+      starOn:  '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      scoreName: 'book[rate]',
+      half: true,
+    });
+  </script>
+
   <div class="form-group">
-    <%= f.submit '投稿', class: "btn btn-success" %>
+    <%= f.submit '投稿', class: "btn btn-success mt-2" %>
   </div>
 <% end %>

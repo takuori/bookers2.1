@@ -15,6 +15,7 @@
             <th>タイトル</th>
             <th>感想</th>
             <th>いいね</th>
+            <th>評価</th>
             <th>編集</th>
             <th>削除</th>
           </tr>
@@ -37,6 +38,21 @@
             </td>
             <td class=<%= "favorite-btn" + @book.id.to_s %> >
               <%= render 'favorites/favorites', book: @book %>
+            </td>
+            <td>
+              <div id="star-rate<%= @book.id %>"></div>
+                <script>
+                  $('#star-rate<%= @book.id %>').empty();
+                  $('#star-rate<%= @book.id %>').raty({
+                    size    : 36,
+                    starOff : '<%= asset_path('star-off.png') %>',
+                    starOn  : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half    : true,
+                    readOnly : true,
+                    score: <%= @book.rate %>,
+                  });
+                </script>
             </td>
             <td>
               <% if @book.user == current_user %>

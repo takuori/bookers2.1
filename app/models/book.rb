@@ -10,6 +10,9 @@ class Book < ApplicationRecord
 
   validates :title, presence: true
   validates :body, length: { minimum: 2, maximum: 50 }
+  validates :rate, numericality: {
+    less_than_or_equal_to: 5,
+    greater_than_or_equal_to: 1}, presence: true
 
   def self.looks(search, word)
     if search == "perfect_match"
