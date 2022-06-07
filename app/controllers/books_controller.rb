@@ -1,10 +1,16 @@
 class BooksController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
+
   def index
     @books = Book.all
     @book = Book.new
     @user = current_user
+    if params[:new]
+      @books = Book.all.order(created_at: :desc)
+    else params[:rate]
+      @books = Book.rate_count.order(rate_at: :desc)
+    end
   end
 
   def create
