@@ -4,8 +4,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'homes/about' => 'homes#about'
   get 'search' => 'searches#search_result'
-  get 'books/search/sort_new', to: 'books#search', as: 'sort_new'
-  get 'books/search/sort_rate', to: 'books#search', as: 'sort_rate'
+  get 'search_book' => 'books#search_book'
 
   resources :users do
     resource :relationships, only: [:create, :destroy]

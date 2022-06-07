@@ -6,6 +6,9 @@
   <h5 class="mt-2">感想</h5>
   <%= f.text_area :body, class: 'form-control' %>
 
+  <h5>タグ</h5>
+  <%= f.text_field:category, class: 'form-control' %>
+
   <h5 class="mt-2">5段階評価</h5>
   <div class="field" id="star">
     <%= f.label :rate,'評価', class: 'col-md-3 col-form-label' %>

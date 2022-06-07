@@ -62,6 +62,7 @@
       </nav>
     </header>
     <%= render 'searches/search' %>
+    <%= render 'books/tag' %>
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>

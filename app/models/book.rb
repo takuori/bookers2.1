@@ -14,8 +14,7 @@ class Book < ApplicationRecord
     less_than_or_equal_to: 5,
     greater_than_or_equal_to: 1}, presence: true
 
-  scope :latest, -> {order(updateed_at: :desc)}
-  scope :rate_count, -> {order(rate_at: :desc)}
+  
 
   def self.looks(search, word)
     if search == "perfect_match"
@@ -29,6 +28,10 @@ class Book < ApplicationRecord
     else
       @book = Book.all
     end
+  end
+  
+  def self.search(search_word)
+    @book = Book.where(['category LIKE?', "#{search_word}"])
   end
 
   def get_profile_image(width, height)

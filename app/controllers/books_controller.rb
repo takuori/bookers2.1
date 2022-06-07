@@ -4,13 +4,9 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    @books = Book.all.order(params[:sort])
     @book = Book.new
     @user = current_user
-    if params[:new]
-      @books = Book.all.order(created_at: :desc)
-    else params[:rate]
-      @books = Book.rate_count.order(rate_at: :desc)
-    end
   end
 
   def create
@@ -51,10 +47,15 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
+  def search_book
+    @book = Book.new
+    @books = Book.search(params[:keyword])
+  end
+
   private
 
   def book_params
-    params.require(:book).permit(:title, :body, :rate)
+    params.require(:book).permit(:title, :body, :rate, :category)
   end
 
   def correct_user
