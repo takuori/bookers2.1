@@ -30,8 +30,8 @@ class Book < ApplicationRecord
     end
   end
   
-  def self.search(search_word)
-    @book = Book.where(['category LIKE?', "#{search_word}"])
+  def self.search(search_keyword)
+    @book = Book.where(['category LIKE?', "#{search_keyword}"])
   end
 
   def get_profile_image(width, height)
